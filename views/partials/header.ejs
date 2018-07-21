@@ -1,0 +1,36 @@
+<div class="ui secondary pointing menu">
+    <a class="active item">
+      Home
+    </a>
+    <a class="item">
+      NYT Scraper
+    </a>
+    <a class="item">
+      All Articles
+    </a>
+    <a class="item">
+        Saved Articles
+      </a>
+    <div class="right menu">
+      <a class="ui item">
+        Logout
+      </a>
+    </div>
+  </div>
+  <div class="ui segment">
+    <p></p>
+  </div>
+
+
+	<header>
+		<a href="/"><div id="sitename">NYT Scraper</div></a>
+		<a href="/"><button id="all-articles">All Articles</button></a>
+		<a href="/saved"><button id="saved-articles">Saved Articles</button></a>
+		<form action="/scrape" method="GET">
+			<button type="submit" id="refresh-articles">Scrape For Newest Articles</button>
+		</form>
+		<form action="/search" method="POST">
+			<button type="submit" id="search-submit">Submit</button>
+			<input type="text" name="search" placeholder="Search for articles" id="search-input">
+		</form>
+	</header>
