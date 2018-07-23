@@ -8,7 +8,6 @@ var mongoose = require("mongoose");
 var logger = require("morgan");
 var cheerio = require("cheerio");
 var request = require("request");
-var ejs = require('ejs');
 
 // Mongoose
 
@@ -46,10 +45,6 @@ app.use(body.urlencoded({extended: false}));
 app.use(method("_method"));
 app.engine("handlebars", exphbs({defaultLayout: "main"}));
 app.set("view engine", "handlebars");
-
-app.listen(port, function() {
-	console.log("Listening on port " + port);
-})
 
 // Routes
 
@@ -161,4 +156,8 @@ app.get("/note/:id", function(req, res) {
 	Article.findById(id).populate("note").exec(function(err, data) {
 		res.send(data.note);
 	})
+})
+
+app.listen(port, function() {
+	console.log("Listening on port " + port + "!");
 })

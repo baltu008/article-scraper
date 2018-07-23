@@ -13,77 +13,42 @@
 </head>
 
 <body>
+
+    <!-- Header -->
     <div class="ui inverted segment sticky">
         <div class="ui inverted secondary pointing stackable menu container">
-            <a href="/home" class="active item">
+            <a href="/" class="active item">
                 <i class="home icon"></i> Home
             </a>
-            <a href="/articles/saved" class="item">
+            <a href="/saved" class="item">
                 My Articles
             </a>
-            <a href="/scrape_articles" class="item">
+            <a href="/" action="/scrape" class="item" method="GET" id="refresh-articles">
                 Scrape NYT
             </a>
-            <div class="right item right-buttons">
-                {{#unless currentUser}}
-                <div class="ui buttons">
-                    <a href="/signin" class="ui inverted button">Sign In</a>
-                    <div class="or"></div>
-                    <a href="/signup" class="ui inverted primary button">Sign Up</a>
-                </div>
-                {{/unless}} {{#if currentUser}}
-                <a href="/logout" class="ui inverted button">Sign Out</a>
-                <a href="#">
-                    <i class="user icon"></i> {{currentUser.firstName}}</a>
-                {{/if}}
-            </div>
-        </div>
-
-    </div>
-    {{!--
-    <header>
-        <a href="/">
-            <div id="sitename">NYT Scraper</div>
-        </a>
-        <a href="/saved">
-            <button id="saved-articles">Saved Articles</button>
-        </a>
-        <form action="/scrape" method="GET">
-            <button type="submit" id="refresh-articles">Scrape For Newest Articles</button>
-        </form>
-        <form action="/search" method="POST">
-            <button type="submit" id="search-submit">Submit</button>
-            <input type="text" name="search" placeholder="Search for articles" id="search-input">
-        </form>
-    </header> --}}
-    <img id="cover" src="/assets/images/cover.jpg">
-    <div id="container">
-        {{{ body }}}
-    </div>
-
-
-    <div id="addnote">
-        <div id="note-displayer">
-            <h2>Note</h2>
-            <h3>Article:
-                <span id="article-title"></span>
-            </h3>
-            <div id="note">
-                <label for="note-title">Title</label>
-                <br>
-                <input type="text" placeholder="Title" name="title" id="note-title">
-                <br>
-                <label for="note-body">Note</label>
-                <br>
-                <textarea rows="7" placeholder="Note" id="note-body"></textarea>
-                <br>
-                <button type="submit" id="add-note">Save Note</button>
-                <button type="button" id="close-note">Cancel</button>
-            </div>
+            <form class="ui item right form" action="/search" method="POST">
+                <input type="text" name="search" placeholder="Search for articles" id="search-input" />
+                <button class="ui button" type="submit" id="search-submit">Submit</button>
+            </form>
         </div>
     </div>
 
-    <footer>© Copyright 2018 Eric Baltutis</footer>
+    {{{ body }}}
+
+    <div class="ui inverted segment">
+        <form class="ui inverted form" id="note-displayer">
+            <div class="field">
+                <label for="article-title">Title</label>
+                <input type="text" name="first-name" id="note-title" placeholder="Article Title">
+            </div>
+            <div class="field">
+                <label>Note</label>
+                <textarea id="note-body"></textarea>
+            </div>
+            <button class="ui button" type="submit" id="add-note">Save Note</button>
+            <button class="ui button" type="button" id="close-note">Cancel</button>
+        </form>
+    </div>
 
     <script src="/assets/javascript/app.js"></script>
     <script src="https://code.jquery.com/jquery-3.1.1.min.js" integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8="

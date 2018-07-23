@@ -1,62 +1,24 @@
 {{#each search}}
 
-<div class="ui cards">
-  <div class="card">
-    <div class="content">
-      <img class="right floated mini ui image" src="/images/avatar/large/elliot.jpg">
-      <div class="header">
-        Elliot Fu
-      </div>
-      <div class="meta">
-        Friends of Veronika
-      </div>
-      <div class="description">
-        Elliot requested permission to view your contact details
-      </div>
-    </div>
-    <div class="extra content">
-      <div class="ui two buttons">
-        <div class="ui basic green button">Approve</div>
-        <div class="ui basic red button">Decline</div>
-      </div>
+<div class="ui centered card" id={{this._id}}>
+  <div class="image">
+    <img class="media" src="{{this.img}}">
+  </div>
+  <div class="content">
+    <a class="header" href="{{this.link}}" target="_blank">{{this.title}}</a>
+    <hr>
+    <div class="description">
+      <summary>{{this.summary}}</summary>
+      <br>
+      <form action="/save/{{this._id}}" method="POST">
+        <button class="ui black button" type="submit" class="status" value="{{this.status}}">{{this.status}}</button>
+        {{#unless this.note}}
+        <button class="ui button" type="button" class="addnote-button" value="{{this._id}}">Add A Note</button>
+        {{/unless}} {{#if this.note}}
+        <button class="ui button" type="button" class="addnote-button" value="{{this._id}}">Edit Note</button>
+        {{/if}}
+      </form>
     </div>
   </div>
-  <div class="card">
-    <div class="content">
-      <img class="right floated mini ui image" src="/images/avatar/large/jenny.jpg">
-      <div class="header">
-        Jenny Hess
-      </div>
-      <div class="meta">
-        New Member
-      </div>
-      <div class="description">
-        Jenny wants to add you to the group <b>best friends</b>
-      </div>
-    </div>
-    <div class="extra content">
-      <div class="ui two buttons">
-        <div class="ui basic green button">Approve</div>
-        <div class="ui basic red button">Decline</div>
-      </div>
-    </div>
-  </div>
-</div>
-
-<div class="story-body" id={{this._id}}>
-<h2>
-<a href="{{this.link}}" target="_blank">{{this.title}}</a>
-<form action="/save/{{this._id}}" method="POST">
-<button type="submit" class="status" value="{{this.status}}">{{this.status}}</button>
-{{#unless this.note}}
-<button type="button" class="addnote-button" value="{{this._id}}">Add A Note</button>
-{{/unless}}
-{{#if this.note}}
-<button type="button" class="addnote-button" value="{{this._id}}">Edit Note</button>
-{{/if}}
-</form>
-</h2>
-<summary>{{this.summary}}</summary>
-<img class="media" src="{{this.img}}">
 </div>
 {{/each}}

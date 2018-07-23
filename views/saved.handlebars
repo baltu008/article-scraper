@@ -1,13 +1,24 @@
 {{#each saved}}
-<div class="story-body" id={{this._id}}>
-<h2>
-<a href="{{this.link}}" target="_blank">{{this.title}}</a>
-<form action="/save/{{this._id}}" method="POST">
-<button type="submit" class="status" value="{{this.status}}">{{this.status}}</button>
-<button type="button" class="addnote-button" value="{{this._id}}">Edit Note</button>
-</form>
-</h2>
-<summary>{{this.summary}}</summary>
-<img class="media" src="{{this.img}}">
+
+<div class="ui centered card" id={{this._id}}>
+    <div class="image">
+        <img class="media" src="{{this.img}}">
+    </div>
+    <div class="content">
+        <a class="header" href="{{this.link}}" target="_blank">{{this.title}}</a>
+        <hr>
+        <div class="description">
+            <summary>{{this.summary}}</summary>
+            <br>
+            <form action="/save/{{this._id}}" method="POST">
+                <button class="ui black button" type="submit" class="status" value="{{this.status}}">{{this.status}}</button>
+                {{#unless this.note}}
+                <button class="ui button" type="button" class="addnote-button" value="{{this._id}}">Add A Note</button>
+                {{/unless}} {{#if this.note}}
+                <button class="ui button" type="button" class="addnote-button" value="{{this._id}}">Edit Note</button>
+                {{/if}}
+            </form>
+        </div>
+    </div>
 </div>
 {{/each}}
