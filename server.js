@@ -17,8 +17,7 @@ var databaseUrl = 'mongodb://localhost/nyt';
 
 if (process.env.MONGODB_URI) {
 	mongoose.Promise = Promise;
-	mongoose.connect(MONGODB_URI);
-	// mongoose.connect(process.env.MONGODB_URI);
+	mongoose.connect(process.env.MONGODB_URI);
 }
 else {
 	mongoose.connect(databaseUrl);
