@@ -15,13 +15,20 @@ var Note = require("./models/Note");
 var Article = require("./models/Article");
 var databaseUrl = 'mongodb://localhost/nyt';
 
-if (process.env.MONGODB_URI) {
-	mongoose.Promise = Promise;
-	mongoose.connect(process.env.MONGODB_URI);
-}
-else {
-	mongoose.connect(databaseUrl);
-};
+
+// Connect to Mongodb or localhost
+var MONGODB_URI = process.env.MONGODB_URI || "mongodb://localhost/mongoHeadlines";
+
+mongoose.Promise = Promise;
+mongoose.connect(MONGODB_URI);
+
+// if (process.env.MONGODB_URI) {
+// 	mongoose.Promise = Promise;
+// 	mongoose.connect(process.env.MONGODB_URI);
+// }
+// else {
+// 	mongoose.connect(databaseUrl);
+// };
 
 mongoose.Promise = Promise;
 var db = mongoose.connection;
