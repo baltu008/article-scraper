@@ -1,36 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
 
-	<header>
-		<a href="/"><div id="sitename">NYT Scraper</div></a>
-		<a href="/"><button id="all-articles">All Articles</button></a>
-		<a href="/saved"><button id="saved-articles">Saved Articles</button></a>
-		<form action="/scrape" method="GET">
-			<button type="submit" id="refresh-articles">Scrape For Newest Articles</button>
-		</form>
-		<form action="/search" method="POST">
-			<button type="submit" id="search-submit">Submit</button>
-			<input type="text" name="search" placeholder="Search for articles" id="search-input">
-		</form>
-	</header>
+<head>
+    <meta charset="UTF-8">
+    <!-- Link Semantic-UI -->
+    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.3.3/semantic.min.css">
 
-    
-	<img id="cover" src="/assets/images/cover.jpg">
-	<div id="container">
-		{{{ body }}}
-	</div>
-	
-	<script src="/assets/javascript/app.js"></script>
+    <!-- Link styling sheet -->
+    <link rel="stylesheet" href="/assets/css/style.css" type="text/css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <title>New York Times Scraper</title>
+</head>
 
-	<div id="addnote">
-		<div id="note-displayer">
-			<h2>Note</h2>
-			<h3>Article: <span id="article-title"></span></h3>
-			<div id="note">
-				<label for="note-title">Title</label><br>
-				<input type="text" placeholder="Title" name="title" id="note-title"><br>
-				<label for="note-body">Note</label><br>
-				<textarea rows="7" placeholder="Note" id="note-body"></textarea><br>
-				<button type="submit" id="add-note">Save Note</button>
-				<button type="button" id="close-note">Cancel</button>
-			</div>
-		</div>
-	</div>
+<body>
+    <div class="ui inverted segment sticky">
+        <div class="ui inverted secondary pointing stackable menu container">
+            <a href="/home" class="active item">
+                <i class="home icon"></i> Home
+            </a>
+            <a href="/articles/saved" class="item">
+                My Articles
+            </a>
+            <a href="/scrape_articles" class="item">
+                Scrape NYT
+            </a>
+            <div class="right item right-buttons">
+                {{#unless currentUser}}
+                <div class="ui buttons">
+                    <a href="/signin" class="ui inverted button">Sign In</a>
+                    <div class="or"></div>
+                    <a href="/signup" class="ui inverted primary button">Sign Up</a>
+                </div>
+                {{/unless}} {{#if currentUser}}
+                <a href="/logout" class="ui inverted button">Sign Out</a>
+                <a href="#">
+                    <i class="user icon"></i> {{currentUser.firstName}}</a>
+                {{/if}}
+            </div>
+        </div>
+
+    </div>
+    {{!--
+    <header>
+        <a href="/">
+            <div id="sitename">NYT Scraper</div>
+        </a>
+        <a href="/saved">
+            <button id="saved-articles">Saved Articles</button>
+        </a>
+        <form action="/scrape" method="GET">
+            <button type="submit" id="refresh-articles">Scrape For Newest Articles</button>
+        </form>
+        <form action="/search" method="POST">
+            <button type="submit" id="search-submit">Submit</button>
+            <input type="text" name="search" placeholder="Search for articles" id="search-input">
+        </form>
+    </header> --}}
+    <img id="cover" src="/assets/images/cover.jpg">
+    <div id="container">
+        {{{ body }}}
+    </div>
+
+
+    <div id="addnote">
+        <div id="note-displayer">
+            <h2>Note</h2>
+            <h3>Article:
+                <span id="article-title"></span>
+            </h3>
+            <div id="note">
+                <label for="note-title">Title</label>
+                <br>
+                <input type="text" placeholder="Title" name="title" id="note-title">
+                <br>
+                <label for="note-body">Note</label>
+                <br>
+                <textarea rows="7" placeholder="Note" id="note-body"></textarea>
+                <br>
+                <button type="submit" id="add-note">Save Note</button>
+                <button type="button" id="close-note">Cancel</button>
+            </div>
+        </div>
+    </div>
+
+    <footer>© Copyright 2018 Eric Baltutis</footer>
+
+    <script src="/assets/javascript/app.js"></script>
+    <script src="https://code.jquery.com/jquery-3.1.1.min.js" integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8="
+        crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.3.3/semantic.min.js"></script>
+    <script src="/assets/javascript/app.js"></script>
+</body>
+
+</html>
