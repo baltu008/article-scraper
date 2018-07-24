@@ -4,8 +4,9 @@ body {
 	-moz-background-size: cover;
 	-o-background-size: cover;
 	background-size: cover;
-	width: fit-content;
-  }
+}
+	
+
 
 .ui.centered.card {
 	margin-left: 30px;

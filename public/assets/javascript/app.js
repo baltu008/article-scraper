@@ -20,12 +20,12 @@ $(document).ready(function () {
 
 	function addnote(event) {
 		event.preventDefault();
-		var id = $(this).attr("value");
+		var action = $(this).closest("form").attr("action");
 		var obj = {
 			title: $("#note-title").val().trim(),
 			body: $("#note-body").val().trim()
 		};
-		$.post("/note/" + id, obj, function (data) {
+		$.post(action, obj, function (data) {
 			window.location.href = "/saved";
 		});
 	}
@@ -41,8 +41,8 @@ $(document).ready(function () {
 		$(this).html($(this).attr("value"));
 	}
 
-	$("body").on("click", ".addnote-button", shownote);
-	$(document).on("submit", "#note-displayer", addnote);
+	$("body").on("click", ".addnote-button, .editnote-button", shownote);
+	$("body").on("submit", "#note-displayer", addnote);
 	$(".status").hover(changestatus, changeback);
 	$("#close-note").on("click", function () {
 		$("#addnote").fadeOut(300);
