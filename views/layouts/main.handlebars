@@ -23,7 +23,7 @@
             <a href="/saved" class="item">
                 My Articles
             </a>
-            <a href="/" action="/scrape" class="item" method="GET" id="refresh-articles">
+            <a href="/scrape" action="/scrape" class="item" method="GET" id="refresh-articles">
                 Scrape NYT
             </a>
             <form class="ui item right form" action="/search" method="POST">
@@ -36,10 +36,10 @@
     {{{ body }}}
 
     <div class="ui inverted segment">
-        <form class="ui inverted form" id="note-displayer">
+        <form class="ui inverted form" id="note-displayer" action="/note/{{this._id}}">
             <div class="field">
                 <label for="article-title">Title</label>
-                <input type="text" name="first-name" id="note-title" placeholder="Article Title">
+                <input type="text" name="first-name" id="note-title" placeholder="Article Title" value="">
             </div>
             <div class="field">
                 <label>Note</label>
@@ -50,7 +50,6 @@
         </form>
     </div>
 
-    <script src="/assets/javascript/app.js"></script>
     <script src="https://code.jquery.com/jquery-3.1.1.min.js" integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8="
         crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.3.3/semantic.min.js"></script>

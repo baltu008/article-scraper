@@ -10,13 +10,14 @@
         <div class="description">
             <summary>{{this.summary}}</summary>
             <br>
-        <form action="/save/{{this._id}}" method="POST">
+        <form action="/save/{{this._id}}" data-id="{{_id}}" method="POST">
             <button class="ui black button" type="submit" class="status" value="{{this.status}}">{{this.status}}</button>
             {{#unless this.note}}
             <button class="ui button" class="addnote-button" value="{{this._id}}">Add A Note</button>
             {{/unless}} {{#if this.note}}
-            <button class="ui button" class="addnote-button" value="{{this._id}}">Edit Note</button>
+            <button class="ui button" class="editnote-button" value="{{this._id}}">Edit Note</button>
             {{/if}}
+            {{log this}}
         </form>
         </div>
     </div>
